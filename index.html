@@ -1,41 +1,285 @@
-<html>
-  <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
-    <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
-  </head>
-  <body>
-    <div id="console"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="fileImagen" aria-describedby="btnReconocer">
-                        <label class="custom-file-label" for="fileImagen" id="lblImagen">Choose file</label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=7">
+  <title>IoT</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-switch@2.0.0/dist/css/bulma-switch.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero is-dark">
+    <div class="hero-head">
+      <nav class="navbar container" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+
+          <a class="navbar-item is--brand">
+            Consola
+        </a>
+          <a class="navbar-item is-tab is-hidden-mobile is-active"><span class="icon is-medium"><i class="fa fa-home"></i></span>Home</a>
+          <a class="navbar-item is-tab is-hidden-mobile" href="https://github.com/autopsia/IoTGrupo3">Github</a>
+
+          <button class="button navbar-burger" data-target="navMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrapper">
+      <div class="container">
+    <div class="">
+      <main class="column main">
+        <div class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <div class="title has-text-primary"><i class="fa fa-tachometer"></i> Dashboard IoT Final</div>
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              <div id="datehoy" class="button is-dark is-small">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-multiline">
+          <div class="column">
+            <div class="box notification is-primary">
+              <div class="heading">Arduino 1</div>
+              <div class="title">ONLINE</div>
+              <div class="level">
+                <div class="level-item">
+                  <div class="">
+                    <div class="heading">CPU</div>
+                    <div class="title is-5"><div id="tempCPU1">0</div></div>
+                  </div>
+                </div>
+                <div class="level-item">
+                  <div class="">
+                    <div class="heading">Arduino</div>
+                    <div class="title is-5"><div id="tempArduino1">0</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="level">
+                    <div class="field">
+                            <input id="alarmaEstado1" type="checkbox" name="switchExample" class="switch">
+                            <label for="switchExample">Alarma</label>
+                        </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="box notification is-warning">
+              <div class="heading">Arduino 2</div>
+              <div class="title">ONLINE</div>
+              <div class="level">
+                    <div class="level-item">
+                      <div class="">
+                        <div class="heading">CPU</div>
+                        <div class="title is-5"><div id="tempCPU2">0</div></div>
+                      </div>
                     </div>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="btnReconocer">Reonocer</button>
+                    <div class="level-item">
+                      <div class="">
+                        <div class="heading">Arduino</div>
+                        <div class="title is-5"><div id="tempArduino2">0</div></div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="level">
+                        <div class="field">
+                                <input id="alarmaEstado2" type="checkbox" name="switchExample" class="switch is-info">
+                                <label for="switchExample">Alarma</label>
+                            </div>
+                  </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="box notification is-info">
+              <div class="heading">Arduino 3</div>
+              <div class="title">ONLINE</div>
+              <div class="level">
+                    <div class="level-item">
+                      <div class="">
+                        <div class="heading">CPU</div>
+                        <div class="title is-5"><div id="tempCPU3">0</div></div>
+                      </div>
+                    </div>
+                    <div class="level-item">
+                      <div class="">
+                        <div class="heading">Arduino</div>
+                        <div class="title is-5"><div id="tempArduino3">0</div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="level">
+                      <div class="field">
+                              <input id="alarmaEstado3" type="checkbox" name="switchExample" class="switch is-info">
+                              <label for="switchExample">Alarma</label>
+                          </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <img id="img" crossOrigin  width=227 height=227/>
+          </div>
+          <div class="column">
+            <div class="box notification is-danger">
+              <div class="heading">Arduino 4</div>
+              <div class="title">ONLINE</div>
+              <div class="level">
+                    <div class="level-item">
+                      <div class="">
+                        <div class="heading">CPU</div>
+                        <div class="title is-5"><div id="tempCPU4">0</div></div>
+                      </div>
+                    </div>
+                    <div class="level-item">
+                      <div class="">
+                        <div class="heading">Arduino</div>
+                        <div class="title is-5"><div id="tempArduino4">0</div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="level">
+                      <div class="field">
+                              <input id="alarmaEstado4" type="checkbox" name="switchExample" class="switch is-info">
+                              <label for="switchExample">Alarma</label>
+                          </div>
+                </div>
             </div>
+          </div>
         </div>
-        <div class="row">
-            <label id="lblMensajeCarga" class="col-sm-12"></label>
+        <article class="message is-light">
+            <div class="message-header">
+              <p>Temperaturas</p>
+            </div>
+            <div class="message-body">
+                <div class="columns is-multiline">
+                    <div id="chartLine1"  class="column is-6">
+                        <canvas id="myChart1" width="600" height="500"></canvas>
+                    </div>
+                    <div id="chartLine2"  class="column is-6">
+                        <canvas id="myChart2" width="600" height="500"></canvas>
+                    </div>
+                </div>
+              
+              </div>
+
+          </article>
+          
+        <div class="columns is-multiline">
+          <div class="column is-6">
+            <article class="message is-primary">
+              <div class="message-header">
+                <p>Arduino 1</p>
+              </div>
+              <div class="message-body">
+                <div id="chartLine" style="width: 100%;">
+                    <img src="http://172.17.32.108:8081" class="img-fluid" alt="camara 1">
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="column is-6">
+            <article class="message is-warning">
+              <div class="message-header">
+                <p>Arduino 2</p>
+              </div>
+              <div class="message-body">
+                <div id="chartScatter" style="width: 100%;">
+                    <img src="http://172.17.32.108:8081" class="img-fluid" alt="camara 2">
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="column is-6">
+            <article class="message is-info">
+              <div class="message-header">
+                <p>Arduino 3</p>
+              </div>
+              <div class="message-body">
+                <div id="chartDoughnut" style="width: 100%;">
+                    <img src="http://172.17.32.108:8081" class="img-fluid" alt="camara 3">
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="column is-6">
+            <article class="message is-danger">
+              <div class="message-header">
+                <p>Arduino 4</p>
+              </div>
+              <div class="message-body">
+                <div id="chartBar" style="width: 100%;">
+                  <img src="http://172.17.32.108:8081" class="img-fluid" alt="camara 4">
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
-        <div id="response">
-        </div>
+      </main>
     </div>
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="index.js"></script>
-  </body>
+</div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
+<script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script>
+  var dataA1 = [23,25,18,11,11,11,13]
+  var dataA2 = [12,22,23,23,23,12,12]
+  var dataA3 = [22,12,12,16,21,23,21]
+  var dataA4 = [21,20,10,16,24,22,15]
+  
+  chartt("myChart1",dataA1,dataA2,dataA3,dataA4)
+  chartt("myChart2",dataA2,dataA4,dataA1,dataA3)
+
+function chartt(div, data1, data2, data3, data4){
+new Chart(document.getElementById(div), {
+  type: 'line',
+  data: {
+    labels: [60,50,40,30,20,10,0],
+    datasets: [{ 
+        data: data1,
+        label: "Arduino 1",
+        borderColor: "#00d1b2",
+        fill: false
+      }, { 
+        data: data2,
+        label: "Arduino 2",
+        borderColor: "#ffdd57",
+        fill: false
+      }, { 
+        data: data3,
+        label: "Arduino 3",
+        borderColor: "#3298dc",
+        fill: false
+      }, { 
+        data: data4,
+        label: "Arduino 4",
+        borderColor: "#f14668",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Temperatura Arduinos en Centigrados'
+    }
+  }
+});
+  }
+  
+  </script>
+</body>
 </html>
