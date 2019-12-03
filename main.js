@@ -35,8 +35,8 @@ refData.on('value', function(data){
   var key = Object.keys(data.val())[0]
   console.log(key)
   console.log(data.length);
-  var tempCPU = data.val().Temperatura_Cpu || 'error'
-  var tempAr = data.val().Temperatura_Arduino || 'error'
+  var tempCPU = data.val().cpu || '0'
+  var tempAr = data.val().arduino || '0'
   var alarma = data.val().alarma || false
 
   document.getElementById("tempCPU"+numDiv).innerHTML = tempCPU
