@@ -54,40 +54,40 @@ function sendAlerta(obj) {
 }
 
 function sendServo(obj) {
-	var value = "izquierda";
+	var value = "IZQUIERDA";
 	generalTopic = topic + topic1 + servoTopic;
 	switch (obj.getAttribute('data-id')) {
 		case '5':
 			generalTopic = topic + topic1 + servoTopic;
-			value = "izquierda";
+			value = "IZQUIERDA";
 			break;
 		case '6':
 			generalTopic = topic + topic1 + servoTopic;
-			value = "derecha";
+			value = "DERECHA";
 			break;
 		case '7':
 			generalTopic = topic + topic2 + servoTopic;
-			value = "izquierda";			
+			value = "IZQUIERDA";			
 			break;
 		case '8':
 			generalTopic = topic + topic2 + servoTopic;
-			value = "derecha";
+			value = "DERECHA";
 			break;
 		case '9':
 			generalTopic = topic + topic3 + servoTopic;
-			value = "izquierda";
+			value = "IZQUIERDA";
 			break;
 		case '10':
 			generalTopic = topic + topic3 + servoTopic;
-			value = "derecha";
+			value = "DERECHA";
 			break;
 		case '11':
 			generalTopic = topic + topic4 + servoTopic;
-			value = "izquierda";
+			value = "IZQUIERDA";
 			break;
 		case '12':
 			generalTopic = topic + topic4 + servoTopic;
-			value = "derecha";
+			value = "DERECHA";
 			break;
 	}
 
