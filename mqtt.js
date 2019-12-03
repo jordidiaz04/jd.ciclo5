@@ -4,6 +4,7 @@ var topic2 = "grupo2/";
 var topic3 = "grupo3/";
 var topic4 = "grupo4/";
 var detailTopic = "alarma/estado";
+var servoTopic = "servo";
 var generalTopic = "";
 
 // Create a client instance: Broker, Port, Websocket Path, Client ID
