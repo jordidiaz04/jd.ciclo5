@@ -74,7 +74,7 @@
               </div>
               <div class="level">
                     <div class="field">
-                            <input id="alarmaEstado1" type="checkbox" name="switchExample" class="switch">
+                            <input id="alarmaEstado1" type="checkbox" data-id="1" name="switchExample" class="switch" onchange="sendAlerta(this)">
                             <label for="alarmaEstado1">Alarma</label>
                         </div>
               </div>
@@ -101,7 +101,7 @@
                   </div>
                   <div class="level">
                         <div class="field">
-                                <input id="alarmaEstado2" type="checkbox" name="switchExample" class="switch is-info">
+                                <input id="alarmaEstado2" type="checkbox" data-id="2" name="switchExample" class="switch is-info" onchange="sendAlerta(this)">
                                 <label for="alarmaEstado2">Alarma</label>
                             </div>
                   </div>
@@ -112,6 +112,10 @@
               <div class="heading">Arduino 3</div>
               <div class="heading">Servo:</div>
               <div class="title"  id="servo3">0</div>
+              <div class="buttons has-addons columns is-centered">
+                <button class="button is-small is-dark">Izquierda</button>
+                <button class="button is-small is-light">Derecha</button>
+              </div>
               <div class="level">
                     <div class="level-item">
                       <div class="container">
@@ -128,7 +132,7 @@
                   </div>
                   <div class="level">
                       <div class="field">
-                              <input id="alarmaEstado3" type="checkbox" name="switchExample" class="switch is-info">
+                              <input id="alarmaEstado3" type="checkbox" data-id="3" name="switchExample" class="switch is-info" onchange="sendAlerta(this)">
                               <label for="alarmaEstado3">Alarma</label>
                           </div>
                 </div>
@@ -155,7 +159,7 @@
                   </div>
                   <div class="level">
                       <div class="field">
-                              <input id="alarmaEstado4" type="checkbox" name="switchExample" class="switch is-info">
+                              <input id="alarmaEstado4" type="checkbox" data-id="4" name="switchExample" class="switch is-info" onchange="sendAlerta(this)">
                               <label for="alarmaEstado4">Alarma</label>
                           </div>
                 </div>
@@ -187,7 +191,8 @@
 <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script src="main.js"></script>
-
 <script src="chart.js"></script>
+<script src="paho-mqtt-min.js"></script>
+<script src="mqtt.js"></script>
 </body>
 </html>
