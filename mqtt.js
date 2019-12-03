@@ -52,30 +52,50 @@ function sendAlerta(obj) {
 	client.subscribe("proyecto/device/grupo2/alarma");
 }
 
-function sendServo(obj){
+function sendServo(obj) {
+	var value = "izquierda";
+	generalTopic = topic + topic1 + servoTopic;
 	switch (obj.getAttribute('data-id')) {
-		case '1':
-			generalTopic = topic + topic1 + detailTopic;
+		case '5':
+			generalTopic = topic + topic1 + servoTopic;
+			value = "izquierda";
 			break;
-		case '2':
-			generalTopic = topic + topic2 + detailTopic;
+		case '6':
+			generalTopic = topic + topic1 + servoTopic;
+			value = "derecha";
 			break;
-		case '3':
-			generalTopic = topic + topic3 + detailTopic;
+		case '7':
+			generalTopic = topic + topic2 + servoTopic;
+			value = "izquierda";			
 			break;
-		case '4':
-			generalTopic = topic + topic4 + detailTopic;
+		case '8':
+			generalTopic = topic + topic2 + servoTopic;
+			value = "derecha";
+			break;
+		case '9':
+			generalTopic = topic + topic3 + servoTopic;
+			value = "izquierda";
+			break;
+		case '10':
+			generalTopic = topic + topic3 + servoTopic;
+			value = "derecha";
+			break;
+		case '11':
+			generalTopic = topic + topic4 + servoTopic;
+			value = "izquierda";
+			break;
+		case '12':
+			generalTopic = topic + topic4 + servoTopic;
+			value = "derecha";
 			break;
 	}
 
-	let value = obj.checked ? "ON" : "OFF";
 	var message = new Paho.MQTT.Message(value);
 	message.destinationName = generalTopic;
 	message.qos = 0;
 	message.retained = false;
 	client.send(message);
 }
-
 
 client.onMessageArrived = function (message) {
 	var data = message.payloadString + ""
