@@ -1,0 +1,166 @@
+<div class="container-fluid" style="position: relative;">
+    <div id="loader-inside-wrapper">
+        <div id="loader-inside"></div>
+        <div class="loader-inside-section section-left"></div>
+        <div class="loader-inside-section section-right"></div>
+    </div>
+    <!--Cabecera de la página-->
+    <div class="row pt-2 pb-2">
+        <div class="col-sm-9">
+            <h4 class="page-title">Mantenimiento de Empleados</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javaScript:void();">General</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Empleado</li>
+            </ol>
+        </div>
+    </div>
+    <!--Contenido de la página-->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-primary waves-effect waves-light m-1" onclick="create()"><i
+                                class="fa fa-file"></i> Nuevo empleado</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-sm">
+                            <thead class="thead-primary">
+                                <tr>
+                                    <th class="text-center">T. Documento</th>
+                                    <th class="text-center">N. Documento</th>
+                                    <th class="text-center">Nombre</th>
+                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Telefono</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbEmployee">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalEmployee">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content border-primary">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white" id="modalTitle"> Modal title</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group row">
+                            <label for="cboTDoc" class="col-sm-2 col-form-label">T. Docum.:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control form-control-sm" id="cboTDoc">
+                                    <option value="Dni">Dni</option>
+                                    <option value="Ruc">Ruc</option>
+                                    <option value="Pasaporte">Pasaporte</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                            </div>
+                            <label for="txtNDoc" class="col-sm-2 col-form-label">N. Docum.:</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="txtNDoc" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtName" class="col-sm-2 col-form-label">Nombre:</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="txtName" class="form-control form-control-sm">
+                            </div>
+                            <label class="col-sm-2 col-form-label">Sexo:</label>
+                            <div class="col-sm-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="icheck-primary">
+                                            <input type="radio" checked id="rbMale" name="primary" />
+                                            <label for="rbMale">Masculino</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="icheck-primary">
+                                            <input type="radio" id="rbFemale" name="primary" />
+                                            <label for="rbFemale">Femenino</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtBirthDate" class="col-sm-2 col-form-label">Cumpleaños:</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="txtBirthDate" class="form-control form-control-sm">
+                            </div>
+                            <label for="txtEmail" class="col-sm-2 col-form-label">Email:</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="txtEmail" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label for="cboDepartment" class="col-form-label">Departamento:</label>
+                                <select class="form-control form-control-sm" id="cboDepartment" onchange="fillProvinces('cboDepartment', 'cboProvince');fillDistricts('cboDepartment', 'cboProvince', 'cboDistrict');">
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="cboProvince" class="col-form-label">Provincia:</label>
+                                <select class="form-control form-control-sm" id="cboProvince" onchange="fillDistricts('cboDepartment', 'cboProvince', 'cboDistrict');">
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="cboDistrict" class="col-form-label">Distrito:</label>
+                                <select class="form-control form-control-sm" id="cboDistrict">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtAddress" class="col-sm-2 col-form-label">Domicilio:</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="txtAddress" class="form-control form-control-sm">
+                            </div>
+                            <label for="txtPhone" class="col-sm-2 col-form-label">Teléfono:</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="txtPhone" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cboMStat" class="col-sm-2 col-form-label">E. Civil:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control form-control-sm" id="cboMStat">
+                                    <option value="Soltero">Soltero</option>
+                                    <option value="Casado">Casado</option>
+                                    <option value="Viudo">Viudo</option>
+                                    <option value="Divorciado">Divorciado</option>
+                                </select>
+                            </div>
+                            <label for="cboProfile" class="col-sm-2 col-form-label">Perfil:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control form-control-sm" id="cboProfile">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-inverse-primary" data-dismiss="modal"><i class="fa fa-times"></i>
+                    Cerrar</button>
+                <button type="button" id="btnSave" class="btn btn-primary" onclick="save()"><i
+                        class="fa fa-check-square-o"></i>
+                    Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/controller/general/employee.js"></script>

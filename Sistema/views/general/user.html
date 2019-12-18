@@ -1,0 +1,101 @@
+<div class="container-fluid" style="position: relative;">
+    <div id="loader-inside-wrapper">
+        <div id="loader-inside"></div>
+        <div class="loader-inside-section section-left"></div>
+        <div class="loader-inside-section section-right"></div>
+    </div>
+    <!--Cabecera de la página-->
+    <div class="row pt-2 pb-2">
+        <div class="col-sm-9">
+            <h4 class="page-title">Mantenimiento de Usuarios</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javaScript:void();">General</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Usuario</li>
+            </ol>
+        </div>
+    </div>
+    <!--Contenido de la página-->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-primary waves-effect waves-light m-1" onclick="create()"><i
+                                class="fa fa-file"></i> Nuevo usuario</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-sm">
+                            <thead class="thead-primary">
+                                <tr>
+                                    <th class="text-center">N. Documento</th>
+                                    <th class="text-center">Nombre</th>
+                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Perfil</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbUser">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalUser">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content border-primary">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white" id="modalTitle"> Modal title</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group row">
+                            <label for="txtNDoc" class="col-sm-2 col-form-label">N. Docum:</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="txtNDoc" class="form-control">
+                            </div>
+                            <label for="txtName" class="col-sm-2 col-form-label">Nombre:</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="txtName" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtEmail" class="col-sm-2 col-form-label">Email:</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="txtEmail" class="form-control">
+                            </div>
+                            <label for="txtPassword" class="col-sm-2 col-form-label">Contraseña:</label>
+                            <div class="col-sm-4">
+                                <input type="password" id="txtPassword" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cboProfile" class="col-sm-2 col-form-label">Perfil:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" id="cboProfile"></select>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-inverse-primary" data-dismiss="modal"><i class="fa fa-times"></i>
+                    Cerrar</button>
+                <button type="button" id="btnSave" class="btn btn-primary" onclick="save()"><i
+                        class="fa fa-check-square-o"></i>
+                    Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/controller/general/user.js"></script>

@@ -1,0 +1,105 @@
+<div class="container-fluid" style="position: relative;">
+    <div id="loader-inside-wrapper">
+        <div id="loader-inside"></div>
+        <div class="loader-inside-section section-left"></div>
+        <div class="loader-inside-section section-right"></div>
+    </div>
+    <!--Cabecera de la página-->
+    <div class="row pt-2 pb-2">
+        <div class="col-sm-9">
+            <h4 class="page-title">Mantenimiento de Perfiles</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javaScript:void();">Seguridad</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Perfil</li>
+            </ol>
+        </div>
+    </div>
+    <!--Contenido de la página-->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-primary waves-effect waves-light m-1"
+                            onclick="create()"><i class="fa fa-file"></i> Nuevo perfil</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-sm">
+                            <thead class="thead-primary">
+                                <tr>
+                                    <th>Titulo</th>
+                                    <th>Descripcion</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbProfile">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalProfile">
+    <div class="modal-dialog">
+        <div class="modal-content border-primary">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white" id="modalTitle"> Modal title</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="txtTitle" class="col-form-label">Título:</label>
+                            <input type="text" id="txtTitle" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtDescripcion" class="col-form-label">Descripcion:</label>
+                            <textarea rows="2" class="form-control" id="txtDescription"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-inverse-primary" data-dismiss="modal"><i class="fa fa-times"></i>
+                    Cerrar</button>
+                <button type="button" id="btnSave" class="btn btn-primary" onclick="save()"><i class="fa fa-check-square-o"></i>
+                    Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalAccess">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content border-primary">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white"> Accesos</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row" id="divAccess">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-inverse-primary" data-dismiss="modal"><i class="fa fa-times"></i>
+                    Cerrar</button>
+                <button type="button" id="btnSaveAccess" class="btn btn-primary" onclick="saveAccess()"><i class="fa fa-check-square-o"></i>
+                    Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/controller/security/profile.js"></script>
